@@ -12,9 +12,10 @@ import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import globalStyle from './assets/styles/globalStyle';
 import UserStory from './components/UserStory/userStory';
 import UserPost from './components/UserPost/UserPost';
+import { scaleFontSize } from './assets/styles/scaling';
 
 const App = () => {
-  const userStories = [
+  const userStories =  [
     {
       id: 1,
       name: 'Nazar',
@@ -162,7 +163,7 @@ const App = () => {
                 <TouchableOpacity style={globalStyle.messageIcon}>
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    size={20}
+                    size={ scaleFontSize(20)}
                     color={'#898DAE'}
                   />
                   <View style={globalStyle.messageNumberContainer}>
@@ -219,10 +220,7 @@ const App = () => {
             );
             if (contentToAppend.length > 0) {
               setUserPostsCurrentPage(userPostsCurrentPage + 1);
-              setUserPostsRenderedData(prev => [
-                ...prev,
-                ...contentToAppend,
-              ]);
+              setUserPostsRenderedData(prev => [...prev, ...contentToAppend]);
             }
             setIsLoadingUserPosts(false);
           }}
